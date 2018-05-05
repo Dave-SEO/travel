@@ -46,7 +46,7 @@ export default {
   }
 }
 </script>
-<style lang = 'less'>
+<style lang = 'less' scoped>
 .container{
   padding-bottom: 0.3rem;
 }

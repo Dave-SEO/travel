@@ -8,7 +8,7 @@
         输入城市/景点/游玩主题
      </div>
      <router-link to="/city" class="header-right">
-        城市
+        {{this.$store.state.city}}
         <span class="iconfont arrow-icon">&#xe64a;</span>
      </router-link>
   </div>
@@ -16,7 +16,7 @@
 
 <script type="text/ecmascript-6">
 </script>
-<style lang = 'less' rel="stylesheet/less">
+<style lang = 'less' rel="stylesheet/less" scoped>
 @import "~styles/varibles";
 
 .header {

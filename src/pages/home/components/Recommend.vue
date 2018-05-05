@@ -2,14 +2,14 @@
     <div class="box">
         <h3 class="title">猜你喜欢</h3>
         <ul>
-            <li  class="listBox border-bottom"  v-for="item in recommendList" :key='item.id'>
+            <router-link tag="li" :to="'/detail/'+item.id"  class="listBox border-bottom"  v-for="item in recommendList" :key='item.id'>
                 <img class="img" :src="item.imgUrl" alt="">
                 <div class="info">
                     <p class="info-title">{{item.title}}</p>
                     <p class="info-desc">{{item.desc}}</p>
                     <button>查看详情</button>
                 </div>
-            </li>
+            </router-link>
         </ul>
     </div>
 </template>

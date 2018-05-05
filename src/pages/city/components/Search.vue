@@ -11,7 +11,7 @@
       </div>
       <div class="content" ref="list" v-show="keyword">
         <ul >
-         <li v-for="item in letter" :key="item.id" class="itemList border-bottom">{{item.name}}</li>
+         <li v-for="item in letter" :key="item.id" class="itemList border-bottom" @click='handleName(item.name)'>{{item.name}}</li>
          <li class="itemList border-bottom" v-show="hasNoData">没有找到匹配数据</li>
         </ul>
       </div>
@@ -35,7 +35,15 @@ export default {
     }
   },
   mounted () {
-    this.scroll = new Bscroll(this.$refs.list)
+    this.scroll = new Bscroll(this.$refs.list, {
+      click: true
+    })
+  },
+  methods: {
+    handleName (name) {
+      this.$store.commit('changeCity', name)
+      this.$router.push('/')
+    }
   },
   watch: {
     keyword () {

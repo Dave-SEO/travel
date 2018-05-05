@@ -5,7 +5,7 @@
         <div class="title">当前城市</div>
         <div class="buttonlist" >
             <div class="button-wrapper" >
-                <div class="button">北京</div>
+                <div class="button">{{this.$store.state.city}}</div>
             </div>
         </div>
       </div>
@@ -13,7 +13,7 @@
       <div class="area">
         <div class="title">热门城市</div>
          <div class="buttonlist" >
-            <div class="button-wrapper" v-for="item in hotCities" :key='item.id'>
+            <div class="button-wrapper" v-for="item in hotCities" :key='item.id' @click='handleName(item.name)'>
                 <div class="button">{{item.name}}</div>
             </div>
         </div>
@@ -21,7 +21,7 @@
       <div class="area" v-for="(key,value) in cities" :key='value' :ref="value">
           <div class="title">{{value}}</div>
           <ul v-for="item in key" :key='item.id'>
-              <li class="itemList border-bottom">{{item.name}}</li>
+              <li class="itemList border-bottom" @click='handleName(item.name)'>{{item.name}}</li>
           </ul>
       </div>
   </div>
@@ -37,8 +37,14 @@ export default {
   },
   mounted () {
     this.$nextTick(() => {
-      this.scroll = new Bscroll(this.$refs.list)
+      this.scroll = new Bscroll(this.$refs.list, {click: true})
     })
+  },
+  methods: {
+    handleName (name) {
+      this.$store.commit('changeCity', name)
+      this.$router.push('/')
+    }
   },
   watch: {
     letter () {

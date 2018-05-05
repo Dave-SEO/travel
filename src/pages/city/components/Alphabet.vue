@@ -2,9 +2,9 @@
     <ul class="Alphabet">
         <li  v-for="(key, value) in cities" :key='value'
          @click="handleLetterClick"
-         @touchstart = 'handleStart'
-         @touchmove = 'handleMove'
-         @touchend = 'handleEnd'
+         @touchstart.prevent = 'handleStart'
+         @touchmove.prevent = 'handleMove'
+         @touchend.prevent = 'handleEnd'
          :ref="value"
          >{{value}}</li>
     </ul>
